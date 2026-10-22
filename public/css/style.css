@@ -327,3 +327,19 @@ footer {
     color: var(--text-muted);
     font-size: 0.85rem;
 }
+
+/* ==========================================================================
+   7. 3D Tilt Effect для карточек курсов
+   ========================================================================== */
+.course-card-wrapper {
+    perspective: 1000px;
+    display: inline-block;
+    width: 100%;
+}
+
+.course-card {
+    transform-style: preserve-3d;
+    will-change: transform;
+    /* Плавный переход для возвращения карточки в исходное положение */
+    transition: transform 0.15s ease-out, box-shadow 0.35s ease, background 0.35s ease, border-color 0.35s ease !important;
+}

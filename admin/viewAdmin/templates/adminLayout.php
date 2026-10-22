@@ -8,7 +8,6 @@
     <!-- Скрипт предотвращения мигания темы при загрузке -->
     <script>
     (function() {
-        // Проверяем, сохранял ли пользователь тему вручную
         const savedTheme = localStorage.getItem('theme');
         
         if (savedTheme) {
@@ -44,7 +43,6 @@
         $adminPanelTitle = $lang['admin_panel'] ?? 'Halduspaneel';
     }
 
-    // Подготовка текущего URL для сохранения страницы при смене языка в админке
     $currentUri = $_SERVER['REQUEST_URI'];
     $cleanUri = preg_replace('/([?&])lang=[a-z]+(&|$)/', '$1', $currentUri);
     $cleanUri = rtrim($cleanUri, '?&');
@@ -67,7 +65,7 @@
                 </ul>
                 
                 <div class="d-flex align-items-center gap-3">
-                    <!-- Переключатель языков (ET / RU / EN) с сохранением текущего URL -->
+                    <!-- Переключатель языков (ET / RU / EN) -->
                     <div class="btn-group btn-group-sm" role="group" aria-label="Language selector">
                         <a href="<?php echo $cleanUri . $separator; ?>lang=et" class="btn btn-outline-primary <?php echo $currentLang === 'et' ? 'active' : ''; ?>">ET</a>
                         <a href="<?php echo $cleanUri . $separator; ?>lang=ru" class="btn btn-outline-primary <?php echo $currentLang === 'ru' ? 'active' : ''; ?>">RU</a>
@@ -118,7 +116,11 @@
         <small>&copy; <?php echo date('Y'); ?> Admin Panel.</small>
     </footer>
 
+    <!-- Подключение JS библиотек и скриптов -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Подключаем общий скрипт (с учетом папки admin путь через ../) -->
+    <script src="../public/js/main.js"></script>
 
     <!-- Логика смены темы -->
     <script>
@@ -137,7 +139,6 @@
             }
         }
 
-        // Получаем актуальную тему (с учетом localStorage или времени суток)
         let currentTheme = localStorage.getItem('theme');
         if (!currentTheme) {
             const currentHour = new Date().getHours();
@@ -151,10 +152,10 @@
             const newTheme = activeTheme === 'dark' ? 'light' : 'dark';
 
             document.documentElement.setAttribute('data-bs-theme', newTheme);
-            localStorage.setItem('theme', newTheme); // Сохраняем ручной выбор
+            localStorage.setItem('theme', newTheme);
             updateIcons(newTheme);
         });
     });
 </script>
 </body>
-</html>
+</html>ы

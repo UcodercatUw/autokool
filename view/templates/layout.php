@@ -14,7 +14,6 @@
     <!-- Скрипт предотвращения мигания темы при загрузке -->
     <script>
     (function() {
-        // Проверяем, сохранял ли пользователь тему вручную
         const savedTheme = localStorage.getItem('theme');
         
         if (savedTheme) {
@@ -35,10 +34,8 @@
 <body class="d-flex flex-column min-vh-100">
 
     <?php 
-    // Определяем текущий язык сессии
     $currentLang = $_SESSION['lang'] ?? 'et';
     
-    // Перевод приветствия с fallback-значением для ET / RU / EN
     if ($currentLang === 'ru') {
         $welcomeText = $lang['greeting'] ?? $lang['welcome'] ?? 'Привет';
         $logoutText = $lang['logout'] ?? 'Выйти';
@@ -53,7 +50,6 @@
         $loginText = $lang['login'] ?? 'Sisene';
     }
 
-    // Подготовка текущего URL для сохранения страницы на сайте
     $currentUri = $_SERVER['REQUEST_URI'];
     $cleanUri = preg_replace('/([?&])lang=[a-z]+(&|$)/', '$1', $currentUri);
     $cleanUri = rtrim($cleanUri, '?&');
@@ -79,7 +75,7 @@
                 </ul>
                 
                 <div class="d-flex align-items-center gap-3">
-                    <!-- Переключатель языков (ET / RU / EN) с сохранением текущего URL -->
+                    <!-- Переключатель языков (ET / RU / EN) -->
                     <div class="btn-group btn-group-sm" role="group" aria-label="Language selector">
                         <a href="<?php echo $cleanUri . $separator; ?>lang=et" class="btn btn-outline-primary <?php echo $currentLang === 'et' ? 'active' : ''; ?>">ET</a>
                         <a href="<?php echo $cleanUri . $separator; ?>lang=ru" class="btn btn-outline-primary <?php echo $currentLang === 'ru' ? 'active' : ''; ?>">RU</a>
@@ -95,7 +91,6 @@
                     <!-- Блок авторизованного пользователя / гостя -->
                     <?php if (isset($_SESSION['user']) || isset($_SESSION['username']) || isset($_SESSION['name']) || isset($_SESSION['status'])): ?>
                         
-                        <!-- Переведенное приветствие пользователя -->
                         <span class="small fw-medium">
                             <?php 
                                 $username = $_SESSION['user'] ?? $_SESSION['username'] ?? $_SESSION['name'] ?? 'Kasutaja';
@@ -103,21 +98,18 @@
                             ?>
                         </span>
 
-                        <!-- Если зашел админ — кнопка перехода в панель -->
                         <?php if (($_SESSION['status'] ?? '') === 'admin'): ?>
                             <a href="admin/" class="btn btn-sm btn-outline-warning rounded-pill px-3">
                                 <?php echo $lang['admin_panel'] ?? $lang['admin_panel_btn'] ?? 'Admin Panel'; ?>
                             </a>
                         <?php endif; ?>
 
-                        <!-- Кнопка Выхода -->
                         <a href="logout" class="btn btn-sm btn-outline-danger rounded-pill px-3 fw-medium">
                             <?php echo htmlspecialchars($logoutText); ?>
                         </a>
 
                     <?php else: ?>
                         
-                        <!-- Кнопка Входа для гостя -->
                         <a href="login" class="btn btn-sm btn-outline-primary rounded-pill px-3">
                             <?php echo htmlspecialchars($loginText); ?>
                         </a>
@@ -140,43 +132,46 @@
         </div>
     </footer>
 
+    <!-- Подключение JS библиотек и скриптов -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Подключаем главный файл скриптов -->
+    <script src="public/js/main.js"></script>
 
-    <!-- Логика смены темы -->
-   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const toggleBtn = document.getElementById('themeToggleBtn');
-        const iconSun = document.getElementById('themeIconSun');
-        const iconMoon = document.getElementById('themeIconMoon');
+    <!-- Логика смены темы и иконок -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleBtn = document.getElementById('themeToggleBtn');
+            const iconSun = document.getElementById('themeIconSun');
+            const iconMoon = document.getElementById('themeIconMoon');
 
-        function updateIcons(theme) {
-            if (theme === 'light') {
-                iconSun.classList.remove('d-none');
-                iconMoon.classList.add('d-none');
-            } else {
-                iconSun.classList.add('d-none');
-                iconMoon.classList.remove('d-none');
+            function updateIcons(theme) {
+                if (theme === 'light') {
+                    iconSun.classList.remove('d-none');
+                    iconMoon.classList.add('d-none');
+                } else {
+                    iconSun.classList.add('d-none');
+                    iconMoon.classList.remove('d-none');
+                }
             }
-        }
 
-        // Получаем актуальную тему (с учетом localStorage или времени суток)
-        let currentTheme = localStorage.getItem('theme');
-        if (!currentTheme) {
-            const currentHour = new Date().getHours();
-            currentTheme = (currentHour >= 6 && currentHour < 13) ? 'light' : 'dark';
-        }
-        
-        updateIcons(currentTheme);
+            let currentTheme = localStorage.getItem('theme');
+            if (!currentTheme) {
+                const currentHour = new Date().getHours();
+                currentTheme = (currentHour >= 6 && currentHour < 18) ? 'light' : 'dark';
+            }
+            
+            updateIcons(currentTheme);
 
-        toggleBtn.addEventListener('click', () => {
-            const activeTheme = document.documentElement.getAttribute('data-bs-theme');
-            const newTheme = activeTheme === 'dark' ? 'light' : 'dark';
+            toggleBtn.addEventListener('click', () => {
+                const activeTheme = document.documentElement.getAttribute('data-bs-theme');
+                const newTheme = activeTheme === 'dark' ? 'light' : 'dark';
 
-            document.documentElement.setAttribute('data-bs-theme', newTheme);
-            localStorage.setItem('theme', newTheme); // Сохраняем ручной выбор
-            updateIcons(newTheme);
+                document.documentElement.setAttribute('data-bs-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                updateIcons(newTheme);
+            });
         });
-    });
-</script>
+    </script>
 </body>
 </html>
