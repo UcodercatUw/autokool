@@ -1,0 +1,66 @@
+<?php
+return [
+    // Навигация и общие элементы
+    'site_title' => 'Driving School - Training',
+    'menu_home' => 'Home',
+    'menu_courses' => 'Courses',
+    'read_more' => 'Read more',
+    'price' => 'Price',
+    'category' => 'Category',
+    'back' => 'Back',
+    'no_courses' => 'No courses found.',
+    'login' => 'Log in',
+    'register' => 'Register',
+    'logout' => 'Log out',
+    'admin_panel' => 'Admin Panel',
+    'admin_panel_btn' => 'Admin Panel',
+    'greeting' => 'Welcome',
+    'rights_reserved' => 'All rights reserved.',
+    'course_not_found' => 'Course not found.',
+
+    // Форма авторизации
+    'login_title' => 'Sign in',
+    'login_error' => 'Invalid username or password',
+
+    // Форма регистрации
+    'reg_title' => 'Registration',
+    'name' => 'Name',
+    'email' => 'Email',
+    'username' => 'Username',
+    'password' => 'Password',
+    'reg_button' => 'Register',
+    'reg_error' => 'Registration error',
+
+    // Элементы админ-панели (Admin panel)
+    'admin_title_brand' => 'Admin',
+    'admin_courses_title' => 'Course Management',
+    'admin_add_course' => 'Add new course',
+    'admin_edit_course' => 'Edit course',
+    'photo' => 'Photo',
+    'title' => 'Title',
+    'actions' => 'Actions',
+    'no_img' => 'No image',
+    'edit' => 'Edit',
+    'delete' => 'Delete',
+    'confirm_delete' => 'Are you sure you want to delete?',
+    'description' => 'Description',
+    'back_to_site' => 'Back to site',
+    'save' => 'Save',
+    'update' => 'Update',
+    'current_image' => 'Current image',
+    'preview' => 'Preview',
+    'new_image' => 'New image',
+    'undefined' => 'Undefined',
+    'admin_role' => 'Administrator',
+    'status' => 'Status',
+    'active' => 'Active',
+    'hidden' => 'Hidden',
+    'status_active_label' => 'Active (visible on website)',
+    'students_count' => 'Enrollments',
+    'already_enrolled' => 'You are already registered for this course',
+    'enroll_btn' => 'Enroll in course',
+    'unenroll_btn' => 'Cancel enrollment',
+    'login_to_enroll' => 'To enroll in the course, please log in.',
+    'schedule' => 'Schedule'
+];
+?>

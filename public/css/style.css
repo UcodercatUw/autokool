@@ -1,0 +1,329 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+/* ==========================================================================
+   1. Цветовые переменные темы (Design Tokens)
+   ========================================================================== */
+
+/* Тёмная тема */
+[data-bs-theme="dark"] {
+    --bg-main: #0b0f19;
+    --bg-card: #111827;
+    --bg-card-hover: #162032;
+    --navbar-bg: rgba(11, 15, 25, 0.88);
+    --border-color: rgba(255, 255, 255, 0.08);
+    --border-focus: rgba(168, 85, 247, 0.5);
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    --text-gradient: linear-gradient(135deg, #f8fafc 0%, #c084fc 60%, #e879f9 100%);
+    --shadow-card: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
+    --shadow-hover: 0 20px 35px -10px rgba(124, 58, 237, 0.25);
+    --img-container-bg: rgba(15, 23, 42, 0.6);
+}
+
+/* Светлая тема */
+[data-bs-theme="light"] {
+    --bg-main: #f8fafc;
+    --bg-card: #ffffff;
+    --bg-card-hover: #fbfcfe;
+    --navbar-bg: rgba(255, 255, 255, 0.92);
+    --border-color: rgba(0, 0, 0, 0.07);
+    --border-focus: rgba(124, 58, 237, 0.4);
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #94a3b8;
+    --text-gradient: linear-gradient(135deg, #0f172a 0%, #6d28d9 60%, #9333ea 100%);
+    --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.03), 0 10px 25px -5px rgba(0, 0, 0, 0.04);
+    --shadow-hover: 0 20px 30px -10px rgba(109, 40, 217, 0.15);
+    --img-container-bg: #f1f5f9;
+}
+
+:root {
+    --primary-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%);
+    --primary-gradient-hover: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #9333ea 100%);
+    /* Строгий, чистый и современный шрифт без засечек */
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+    --radius-pill: 9999px;
+}
+
+/* ==========================================================================
+   2. Базовая типографика (Без засечек)
+   ========================================================================== */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-main);
+    background-image: 
+        radial-gradient(at 10% 10%, rgba(99, 102, 241, 0.06) 0px, transparent 40%),
+        radial-gradient(at 90% 90%, rgba(168, 85, 247, 0.06) 0px, transparent 40%);
+    background-attachment: fixed;
+    font-family: var(--font-sans);
+    color: var(--text-primary);
+    line-height: 1.6;
+    letter-spacing: -0.015em;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Все заголовки теперь простые и строгие */
+h1, h2, h3, h4, h5, h6, .card-title, .navbar-brand {
+    font-family: var(--font-sans) !important;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+}
+
+h1, h2 {
+    background: var(--text-gradient);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+}
+
+/* ==========================================================================
+   3. Навбар (Современный Glassmorphism)
+   ========================================================================== */
+.navbar {
+    background: var(--navbar-bg) !important;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border-color);
+    padding: 0.85rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1020;
+    transition: all 0.3s ease;
+}
+
+.navbar-brand {
+    font-size: 1.45rem;
+    font-weight: 800;
+    font-style: normal; /* Без курсива */
+    background: var(--text-gradient);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.035em;
+}
+
+.nav-link {
+    font-weight: 500;
+    color: var(--text-secondary) !important;
+    transition: color 0.2s ease;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--text-primary) !important;
+}
+
+/* ==========================================================================
+   4. Карточки курсов
+   ========================================================================== */
+.course-card {
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: var(--radius-lg) !important;
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.course-card:hover {
+    background: var(--bg-card-hover) !important;
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover);
+    border-color: rgba(139, 92, 246, 0.35) !important;
+}
+
+.course-card-img-wrapper {
+    position: relative;
+    height: 195px;
+    background: var(--img-container-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.course-card-img-wrapper img {
+    max-height: 100%;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: var(--radius-md);
+    transition: transform 0.4s ease;
+}
+
+.course-card:hover .course-card-img-wrapper img {
+    transform: scale(1.05);
+}
+
+.course-badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 2;
+    background: var(--primary-gradient) !important;
+    color: #ffffff !important;
+    padding: 0.38em 0.9em;
+    border-radius: var(--radius-pill);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.35);
+}
+
+.card-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-primary) !important;
+    margin-bottom: 0.5rem;
+    line-height: 1.35;
+}
+
+.card-text {
+    color: var(--text-secondary) !important;
+    line-height: 1.55;
+    font-size: 0.88rem;
+}
+
+/* ==========================================================================
+   5. Кнопки и поля ввода
+   ========================================================================== */
+.btn {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 0.88rem;
+    padding: 0.5rem 1.25rem;
+    border-radius: var(--radius-pill);
+    transition: all 0.25s ease;
+    letter-spacing: -0.01em;
+}
+
+.btn:active {
+    transform: scale(0.97);
+}
+
+.btn-primary {
+    background: var(--primary-gradient) !important;
+    border: none !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 14px rgba(99, 102, 241, 0.28);
+}
+
+.btn-primary:hover {
+    background: var(--primary-gradient-hover) !important;
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.42);
+    transform: translateY(-1px);
+}
+
+.btn-outline-primary {
+    border: 1px solid var(--border-color) !important;
+    background: transparent !important;
+    color: var(--text-primary) !important;
+}
+
+.btn-outline-primary:hover {
+    border-color: #8b5cf6 !important;
+    background: rgba(139, 92, 246, 0.08) !important;
+    color: #8b5cf6 !important;
+}
+
+.btn-group .btn-outline-primary.active {
+    background: var(--primary-gradient) !important;
+    border-color: transparent !important;
+    color: #ffffff !important;
+    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.4);
+}
+
+.form-control, .form-select {
+    background-color: var(--bg-card) !important;
+    border: 1px solid var(--border-color) !important;
+    color: var(--text-primary) !important;
+    border-radius: var(--radius-pill) !important;
+    padding: 0.65rem 1.25rem;
+    font-size: 0.92rem;
+    transition: all 0.25s ease;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #8b5cf6 !important;
+    box-shadow: 0 0 0 4px var(--border-focus) !important;
+}
+
+.theme-toggle-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-color);
+    background: var(--bg-card);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.theme-toggle-btn:hover {
+    transform: scale(1.08) rotate(10deg);
+    border-color: #8b5cf6;
+    background: var(--bg-card-hover);
+}
+
+/* ==========================================================================
+   6. Таблицы в админке
+   ========================================================================== */
+.table {
+    --bs-table-bg: transparent !important;
+    --bs-table-color: var(--text-primary) !important;
+    border-color: var(--border-color) !important;
+}
+
+.table th {
+    color: var(--text-muted) !important;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+    padding: 1rem 1.25rem;
+    background: var(--bg-card-hover) !important;
+    border-bottom: 1px solid var(--border-color) !important;
+}
+
+.table td {
+    padding: 1.05rem 1.25rem;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--border-color) !important;
+    color: var(--text-primary) !important;
+    font-size: 0.92rem;
+}
+
+.admin-thumb {
+    width: 60px;
+    height: 42px;
+    object-fit: contain;
+    background: var(--img-container-bg);
+    border-radius: var(--radius-sm);
+    padding: 3px;
+    border: 1px solid var(--border-color);
+}
+
+.alert {
+    border-radius: var(--radius-md);
+    font-size: 0.92rem;
+    font-weight: 500;
+}
+
+footer {
+    border-top: 1px solid var(--border-color);
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}

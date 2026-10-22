@@ -1,0 +1,66 @@
+<?php
+return [
+    // Навигация и общие элементы
+    'site_title' => 'Autokool - Sõiduõpe',
+    'menu_home' => 'Avaleht',
+    'menu_courses' => 'Kursused',
+    'read_more' => 'Loe lähemalt',
+    'price' => 'Hind',
+    'category' => 'Kategooria',
+    'back' => 'Tagasi',
+    'no_courses' => 'Kursusi ei leitud.',
+    'login' => 'Sisene',
+    'register' => 'Registreeru',
+    'logout' => 'Välju',
+    'admin_panel' => 'Halduspaneel',
+    'admin_panel_btn' => 'Halduspaneel',
+    'greeting' => 'Tere',
+    'rights_reserved' => 'Kõik õigused kaitstud.',
+    'course_not_found' => 'Kursust ei leitud.',
+
+    // Форма авторизации
+    'login_title' => 'Sisselogimine',
+    'login_error' => 'Vale kasutajanimi või parool',
+
+    // Форма регистрации
+    'reg_title' => 'Registreerimine',
+    'name' => 'Nimi',
+    'email' => 'E-post',
+    'username' => 'Kasutajanimi',
+    'password' => 'Parool',
+    'reg_button' => 'Registreeru',
+    'reg_error' => 'Viga registreerumisel',
+
+    // Элементы админ-панели (Admin panel)
+    'admin_title_brand' => 'Admin',
+    'admin_courses_title' => 'Kursuste haldamine',
+    'admin_add_course' => 'Lisa uus kursus',
+    'admin_edit_course' => 'Muuda kursust',
+    'photo' => 'Pilt',
+    'title' => 'Pealkiri',
+    'actions' => 'Tegevused',
+    'no_img' => 'Pilt puudub',
+    'edit' => 'Muuda',
+    'delete' => 'Kustuta',
+    'confirm_delete' => 'Oled kindel, et soovid kustutada?',
+    'description' => 'Kirjeldus',
+    'back_to_site' => 'Tagasi saidile',
+    'save' => 'Salvesta',
+    'update' => 'Uuenda',
+    'current_image' => 'Praegune pilt',
+    'preview' => 'Eelvaade',
+    'new_image' => 'Uus pilt',
+    'undefined' => 'Määramata',
+    'admin_role' => 'Administraator',
+    'status' => 'Olek',
+    'active' => 'Aktiivne',
+    'hidden' => 'Peidetud',
+    'status_active_label' => 'Aktiivne (nähtav kodulehel)',
+    'students_count' => 'Registreerimisi',
+    'already_enrolled' => 'Olete sellele kursusele juba registreeritud',
+    'enroll_btn' => 'Registreeru kursusele',
+    'unenroll_btn' => 'Loobu kursusest',
+    'login_to_enroll' => 'Kursusele registreerumiseks palun logige sisse.',
+    'schedule' => 'Päevad'
+];
+?>
